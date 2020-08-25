@@ -1,6 +1,27 @@
 @import '~antd/dist/antd.less';
 
-.header{
-    background-color: aqua;
+.main-header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
+.logo {
+  margin-right: 50px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.main-content {
+  min-height: calc(100vh - 64px - 70px);
+  padding: 0 50px;
+  margin-top: 64px;
+}
+
+.footer {
+  text-align: center;
+  background-color: #333333;
+}

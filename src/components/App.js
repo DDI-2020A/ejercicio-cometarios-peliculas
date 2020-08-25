@@ -1,56 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../styles/App.less';
-import { PageHeader, Button, Input, Radio, } from 'antd';
-import SearchOutlined from '@ant-design/icons/lib/icons/SearchOutlined';
-import Movies from './Movies';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Layout, Breadcrumb } from 'antd';
+import logo from '../images/logo-menta.png';
+import Navigation from './Navigation';
+import AppRouter from '../routers/AppRouter';
 
+const { Header, Content, Footer } = Layout;
 
-
-function App() {
-
-  const [ listMovies, setListMovies ] = useState( null );
-  const [ tittle, setTittle ] = useState( 'cars' );
-
-  useEffect( () => {
-    const getListMovies = async() => {
-      const data = await fetch( `http://www.omdbapi.com/?apikey=135f640d&s=${ tittle }` );
-      const jsonListMovies = await data.json();
-      console.log( 'movies', jsonListMovies );
-      setListMovies( jsonListMovies );
-    };
-    getListMovies();
-  }, [ tittle ] );
-
-  const handleResearch = () => {
-    const title = '&s=' + document.querySelector( '#Tittle' ).value;
-    setTittle( title );
-
-  };
+const App = () => {
   return (
-    <>
-      <div className='header'>
-        <PageHeader
-          title='MOVIES'
-          extra={ [
-            <Input id='Tittle' placeholder='Titulo' style={ { width: 350 } } />,
-            <Input placeholder='Año' style={ { width: 350 } } />,
-            <label>Tipo: </label>,
-            <Radio.Group>
-              <Radio value={ 1 }>Todo</Radio>
-              <Radio value={ 2 }>Peliculas</Radio>
-              <Radio value={ 3 }>Series</Radio>
-            </Radio.Group>,
-            <Button type='primary' onClick={ handleResearch } icon={ <SearchOutlined /> }>
-              Buscar
-            </Button>
-          ] }
-        >
-        </PageHeader>
+    <Router>
 
-      </div>
-      <Movies listMovies={ listMovies } />
-    </>
+      <Layout className='layout'>
+        <Header className='main-header'>
+          <div className='logo'>
+            <img src={ logo } alt='Menta' />
+          </div>
+          <Navigation />
+        </Header>
+
+        <Content className='main-content'>
+          <Breadcrumb style={ { margin: '16px 0' } }>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+
+          <AppRouter />
+
+        </Content>
+
+        <Footer className='footer'>
+          <img src={ logo } alt='Menta' height={ 40 } />
+        </Footer>
+      </Layout>
+    </Router>
   );
-}
+};
 
 export default App;
