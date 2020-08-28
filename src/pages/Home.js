@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect( () => {
     const getListMovies = async() => {
-      const data = await fetch( `http://www.omdbapi.com/?apikey=135f640d&s=${ tittle }` );
+      const data = await fetch( `https://www.omdbapi.com/?apikey=135f640d&s=${ tittle }` );
       const jsonListMovies = await data.json();
       console.log( 'movies', jsonListMovies );
       setListMovies( jsonListMovies );
