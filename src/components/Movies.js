@@ -26,7 +26,7 @@ const Movies = ( props ) => {
   useEffect( () => {
     const getMovieDetails = async() => {
       if( imdbID ) {
-        const response = await fetch( `http://www.omdbapi.com/?apikey=135f640d&i=${ imdbID }` );
+        const response = await fetch( `https://www.omdbapi.com/?apikey=135f640d&i=${ imdbID }` );
         const movieJson = await response.json();
         setMovieDetails( movieJson );
         setCreateInfoModalVisible( true );
