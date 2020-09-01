@@ -24,10 +24,16 @@ app.initializeApp( config );
 
 // export default app;
 // const auth = app.auth();
-export const db = app.database();
+const db = app.database();
 // export const storage = app.storage();
 // export const functions = app.functions();
 
+
+const FIREBASE = {
+  db
+}
+
+export default FIREBASE;
 
 
 // *** Auth API ***
