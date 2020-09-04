@@ -4,6 +4,8 @@
 
 const publicRoutes = {
   HOME: '/',
+  LOGIN: '/login',
+  REGISTER: '/registro',
   SERVICES: '/servicios',
   ABOUT: '/nosotros',
 };

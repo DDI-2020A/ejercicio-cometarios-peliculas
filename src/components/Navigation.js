@@ -2,11 +2,12 @@
  * Created by chalosalvador on 8/25/20
  */
 import React, { useEffect, useState } from 'react';
-import { Menu } from 'antd';
+import { Button, Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, AppstoreOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { HomeOutlined, AppstoreOutlined, QuestionCircleOutlined, LoginOutlined } from '@ant-design/icons';
 import { useLocation } from 'react-router-dom';
 import Routes from '../constants/routes';
+import FIREBASE from '../firebase';
 
 const Navigation = () => {
   let location = useLocation();
@@ -34,6 +35,20 @@ const Navigation = () => {
       <Menu.Item key='nosotros' icon={ <QuestionCircleOutlined /> }>
         <Link to={ Routes.ABOUT }>Nosotros</Link>
       </Menu.Item>
+
+      <Menu.Item key='login' icon={ <LoginOutlined /> }>
+        <Link to={ Routes.LOGIN }>Iniciar sesión</Link>
+      </Menu.Item>
+
+      <Menu.Item key='register' icon={ <LoginOutlined /> }>
+        <Link to={ Routes.REGISTER }>Register</Link>
+      </Menu.Item>
+
+      <Menu.Item key='logout' icon={ <LoginOutlined /> }>
+        <Button type='link' onClick={ () => FIREBASE.auth.signOut() }>Logout</Button>
+      </Menu.Item>
+
+
     </Menu>
   );
 };

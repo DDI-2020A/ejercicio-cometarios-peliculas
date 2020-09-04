@@ -8,12 +8,22 @@ import Services from '../pages/Services';
 import About from '../pages/About';
 import NotFound from '../pages/NotFound';
 import Routes from '../constants/routes';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 const AppRouter = () => {
   return (
     <Switch>
       <Route exact path={ Routes.HOME }>
         <Home />
+      </Route>
+
+      <Route exact path={ Routes.LOGIN }>
+        <Login />
+      </Route>
+
+      <Route exact path={ Routes.REGISTER }>
+        <Register />
       </Route>
       <Route path={ Routes.SERVICES }>
         <Services />

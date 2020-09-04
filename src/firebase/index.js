@@ -2,7 +2,7 @@
  * Created by chalosalvador on 8/28/20
  */
 import app from 'firebase/app';
-// import 'firebase/auth';
+import 'firebase/auth';
 import 'firebase/database';
 // import 'firebase/storage';
 // import 'firebase/functions';
@@ -23,14 +23,15 @@ const config = {
 app.initializeApp( config );
 
 // export default app;
-// const auth = app.auth();
+const auth = app.auth();
 const db = app.database();
 // export const storage = app.storage();
 // export const functions = app.functions();
 
 
 const FIREBASE = {
-  db
+  db,
+  auth
 }
 
 export default FIREBASE;
